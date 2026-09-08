@@ -1,474 +1,489 @@
 <!DOCTYPE html>
-<html class="no-js ss-preload" lang="en">
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sulistyo Ponco Nugroho — Software Engineer focused on backend systems, system architecture, and complex operational applications." />
+  <title>Sulistyo Ponco Nugroho — Software Engineer</title>
+  <style>
+    :root {
+      --navy: #0b1f33;
+      --navy-2: #102b45;
+      --blue: #1d4f73;
+      --teal: #2f7d7a;
+      --ink: #172533;
+      --muted: #647484;
+      --line: #dce4ea;
+      --surface: #f5f8fa;
+      --white: #ffffff;
+      --max: 1120px;
+      --radius: 16px;
+    }
 
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Sulistyo Portfolio</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: auto; }
 
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(220,228,234,.8);
+    }
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--navy);
+    }
+    .brand span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--navy); }
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      place-items: center;
+      padding: 130px 0 80px;
+      background:
+        radial-gradient(circle at 80% 25%, rgba(47,125,122,.10), transparent 28%),
+        linear-gradient(180deg, #f7fafc 0%, #fff 70%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--teal);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--teal);
+    }
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      color: var(--navy);
+    }
+    .hero h1 em {
+      display: block;
+      color: var(--blue);
+      font-style: normal;
+    }
+    .hero-copy {
+      max-width: 650px;
+      margin: 28px 0;
+      font-size: 1.12rem;
+      color: var(--muted);
+    }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 19px;
+      border-radius: 10px;
+      font-weight: 750;
+      font-size: .92rem;
+      border: 1px solid var(--navy);
+      transition: .2s ease;
+    }
+    .btn-primary { background: var(--navy); color: white; }
+    .btn-primary:hover { background: var(--blue); }
+    .btn-secondary { color: var(--navy); background: white; }
+    .btn-secondary:hover { background: var(--surface); }
 
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    section { padding: 105px 0; }
+    .section-head { max-width: 700px; margin-bottom: 48px; }
+    .section-kicker {
+      color: var(--teal);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 10px 0 14px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .section-head p { color: var(--muted); margin: 0; }
 
+    .about { background: var(--surface); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+    }
+    .statement {
+      font-size: 1.55rem;
+      line-height: 1.35;
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+    .about-text { color: var(--muted); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 48px;
+    }
+    .stat { background: white; padding: 24px; }
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 2rem;
+      letter-spacing: -.04em;
+    }
+    .stat span { color: var(--muted); font-size: .84rem; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .project {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 50px rgba(11,31,51,.08);
+    }
+    .project-number {
+      color: var(--teal);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+    .project h3 { color: var(--navy); margin: 12px 0 8px; font-size: 1.3rem; }
+    .project p { color: var(--muted); margin: 0 0 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .architecture { background: var(--navy); color: white; }
+    .architecture h2 { color: white; }
+    .architecture .section-head p { color: rgba(255,255,255,.65); }
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.13);
+    }
+    .arch-item { padding: 30px; background: var(--navy); }
+    .arch-item h3 { margin: 0 0 10px; font-size: 1.05rem; }
+    .arch-item p { color: rgba(255,255,255,.62); font-size: .9rem; margin: 0; }
+
+    .experience { background: var(--surface); }
+    .timeline { border-top: 1px solid var(--line); }
+    .role {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 45px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .role-date { color: var(--teal); font-weight: 750; font-size: .82rem; }
+    .role h3 { margin: 0; color: var(--navy); font-size: 1.25rem; }
+    .role-company { color: var(--muted); margin: 3px 0 12px; }
+    .role p { margin: 0; color: var(--muted); }
+
+    .contact {
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      color: white;
+    }
+    .contact h2 { color: white; max-width: 750px; }
+    .contact p { color: rgba(255,255,255,.68); max-width: 620px; }
+    .contact-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+    .contact .btn { border-color: rgba(255,255,255,.3); color: white; }
+    .contact .btn-primary { background: white; color: var(--navy); border-color: white; }
+
+    footer {
+      padding: 24px 0;
+      background: #071726;
+      color: rgba(255,255,255,.45);
+      font-size: .78rem;
+    }
+    footer .container { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 45px; }
+      .signal { margin: 0; max-width: 230px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .projects, .arch-grid { grid-template-columns: 1fr; }
+      .role { grid-template-columns: 1fr; gap: 8px; }
+      section { padding: 75px 0; }
+    }
+  </style>
 </head>
+<body>
 
-<body id="top">
+<header>
+  <nav class="container">
+    <a class="brand" href="#top">SULISTYO PONCO NUGROHO<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-
-    <!-- # preloader
-    ================================================== -->
-    <!-- <div id="preloader"> -->
-        <!-- <div id="loader"> -->
-        <!-- </div> -->
-    <!-- </div> -->
-
-
-    <!-- # page wrap
-    ================================================== -->
-    <div class="s-pagewrap">
-
-        <div class="circles">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Hello, I'm Tyo · Software Engineer · System Architecture</div>
+        <h1>Building systems<br><em>you can trust.</em></h1>
+        <p class="hero-copy">
+          Software Engineer with 15+ years of experience designing and building
+          backend systems, operational applications, and complex integrated solutions.
+          From understanding the problem to shaping the architecture and making it work.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="Sulistyo_Ponco_Nugroho-CV.pdf">Download CV</a>
+          <a class="btn btn-secondary" href="#contact">Let's connect</a>
         </div>
+      </div>
+  </section>
 
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-kicker">01 · About</div>
+          <p class="statement">
+            I turn complex operational requirements into systems that are
+            understandable, maintainable, and dependable.
+          </p>
+        </div>
+        <div class="about-text">
+          <p>
+            My background sits between software engineering and system analysis.
+            I enjoy understanding how a business or operational process actually
+            works, identifying the important constraints, and translating them
+            into a practical technical solution.
+          </p>
+          <p>
+            My experience includes railway control and information systems,
+            simulation applications, backend services, system integration,
+            databases, and software architecture. I also work directly with
+            clients and stakeholders, helping bridge the gap between operational
+            needs and engineering decisions.
+          </p>
+        </div>
+      </div>
 
-        <!-- ## site header 
-        ================================================== -->
-        <header class="s-header">
+      <div class="stats">
+        <div class="stat"><strong>15+</strong><span>Years in software</span></div>
+        <div class="stat"><strong>50+</strong><span>Railway stations</span></div>
+        <div class="stat"><strong>360°</strong><span>End-to-end perspective</span></div>
+        <div class="stat"><strong>∞</strong><span>Curiosity to improve</span></div>
+      </div>
+    </div>
+  </section>
 
-            <div class="header-mobile">
-                <span class="mobile-home-link"><a href="index.html">Me.</a></span>
-                <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
-            </div>
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">02 · Selected work</div>
+        <h2>Systems built for real-world operations.</h2>
+        <p>
+          A selection of projects that reflect my experience across engineering,
+          analysis, architecture, and system integration.
+        </p>
+      </div>
 
-            <div class="row wide main-nav-wrap">
-                <nav class="column lg-12 main-nav">
-                    <ul>
-                        <li><a href="index.html" class="home-link">Me.</a></li>
-                        <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
-                        <li><a href="#about" class="smoothscroll">About</a></li>
-                        <li><a href="#works" class="smoothscroll">Works</a></li>
-                        <li><a href="#contact" class="smoothscroll">Say Hello</a></li>
-                    </ul>
-                </nav>
-            </div>
+      <div class="projects">
+        <article class="project">
+          <div class="project-number">01 / RAILWAY</div>
+          <h3>Train Management Information System</h3>
+          <p>
+            System for planning, recording, and visualizing actual train movements
+            through Train Trip Graphs across multiple centralized control sites.
+          </p>
+          <div class="tags"><span class="tag">System Design</span><span class="tag">Railway</span><span class="tag">Operations</span></div>
+        </article>
 
-        </header> <!-- end s-header -->
+        <article class="project">
+          <div class="project-number">02 / GOVERNMENT</div>
+          <h3>PROKA</h3>
+          <p>
+            Served as System Analyst and Backend Programmer, translating operational
+            workflows and stakeholder requirements into system design and backend functionality.
+          </p>
+          <div class="tags"><span class="tag">Analysis</span><span class="tag">Backend</span><span class="tag">Integration</span></div>
+        </article>
 
+        <article class="project">
+          <div class="project-number">03 / SIMULATION</div>
+          <h3>Urban LRTJ Train Simulator MMI</h3>
+          <p>
+            Developed an MMI training application using COPA-DATA zenon for
+            real-time train control and operational scenario simulation.
+          </p>
+          <div class="tags"><span class="tag">MMI</span><span class="tag">Simulation</span><span class="tag">zenon</span></div>
+        </article>
 
-        <!-- ## main content
-        ==================================================- -->
-        <main class="s-content">
+        <article class="project">
+          <div class="project-number">04 / INFORMATION SYSTEM</div>
+          <h3>Automatic Broadcast System</h3>
+          <p>
+            Integrated timetable data with Public Address and Passenger Information
+            Display systems for Soekarno-Hatta Airport Skytrain.
+          </p>
+          <div class="tags"><span class="tag">Integration</span><span class="tag">Automation</span><span class="tag">Real-time</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
+  <section id="architecture" class="architecture">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">03 · Architecture mindset</div>
+        <h2>Technology is a tool.<br>Architecture is a decision.</h2>
+        <p>
+          I focus on choosing the simplest architecture that can reliably solve
+          the actual problem, while keeping room for future growth.
+        </p>
+      </div>
 
-            <!-- ### intro
-            ================================================== -->
-            <section id="intro" class="s-intro target-section">
+      <div class="arch-grid">
+        <div class="arch-item">
+          <h3>Understand the problem</h3>
+          <p>Business process, operational constraints, users, risks, and requirements.</p>
+        </div>
+        <div class="arch-item">
+          <h3>Shape the solution</h3>
+          <p>System boundaries, responsibilities, integration, data, and architecture decisions.</p>
+        </div>
+        <div class="arch-item">
+          <h3>Make it real</h3>
+          <p>Hands-on implementation, testing, deployment, integration, and continuous improvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <div class="row intro-content wide">
+  <section id="experience" class="experience">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">04 · Experience</div>
+        <h2>A career built from the ground up.</h2>
+      </div>
 
-                    <div class="column">
-                        <div class="text-pretitle with-line">
-                            Hello World
-                        </div>
+      <div class="timeline">
+        <div class="role">
+          <div class="role-date">2017 — Present</div>
+          <div>
+            <h3>HMI Engineering</h3>
+            <div class="role-company">PT. Len Railway Systems · Bandung</div>
+            <p>Software engineering, system analysis, solution design, HMI architecture, backend development, stakeholder engagement, and system integration across railway projects.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-date">2014 — 2016</div>
+          <div>
+            <h3>Software Developer</h3>
+            <div class="role-company">Boarding Labs · Bandung</div>
+            <p>Led development work, analyzed requirements, and delivered business applications including inventory management and mobile applications.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-date">2011 — 2014</div>
+          <div>
+            <h3>Web, Mobile & iOS Developer</h3>
+            <div class="role-company">WAMR · PT. Ciptadrasoft · PT. Arya Jaya Formasi</div>
+            <p>Built websites, mobile applications, interactive experiences, CRM features, and iOS applications across multiple products.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                        <h1 class="text-huge-title">
-                            I am Tyo, <br>
-                            a senior software eng. <br>
-                            a fullstack developer <br>
-                            a mobile iOS developer <br>
-                            based in Indonesia.
-                        </h1>
-                    </div>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-kicker">05 · Contact</div>
+      <h2>Have a complex problem worth solving?</h2>
+      <p>
+        I am interested in opportunities involving software engineering,
+        system architecture, solution design, and technically challenging
+        operational systems.
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:sulistyo.p.n@gmail.com">Email me</a>
+        <a class="btn" href="https://linkedin.com/in/sulistyo-p-n" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/sulistyo-p-n" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-                    <ul class="intro-social">
-                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sulistyo-ponco-nugroho-709aa884/">LinkedIn</a></li>
-                        <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/sulistyo-p-n">Github</a></li>
-                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/sulistyopn/">Instagram</a></li>
-                        <li><a target="_blank" rel="noopener noreferrer" href="https://wa.me/628562061152">Whatsapp</a></li>
-                    </ul>
-
-                </div> <!-- end intro content -->
-
-                <a href="#about" class="intro-scrolldown smoothscroll">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
-                </a>
-
-            </section> <!-- end s-intro -->
-
-
-            <!-- ### about
-            ================================================== -->
-            <section id="about" class="s-about target-section">
-
-
-                <div class="row about-info wide" data-animate-block>
-
-                    <div class="column lg-6 md-12 about-info__pic-block">
-                        <img src="images/about-photo.jpg" 
-                             srcset="images/about-photo.jpg 1x, images/about-photo@2x.jpg 2x" alt="" class="about-info__pic" data-animate-el>
-                    </div>
-
-                    <div class="column lg-6 md-12">
-                        <div class="about-info__text" >
-
-                            <h2 class="text-pretitle with-line" data-animate-el>
-                                About
-                            </h2>
-                            <p class="attention-getter" data-animate-el>
-                                I am an Engineering Professional graduate interested in the Software Engineer field.
-                                I have deep knowledge and experience in software development. I have good analytical
-                                skills and a dedication to continuously learning and developing in the technology field.
-                                My expertise in software development will enable me to make a meaningful contribution
-                                to developing innovative solutions in this field.
-                            </p>
-                            <a href="Sulistyo_Ponco_Nugroho-CV.pdf" class="btn btn--medium u-fullwidth" data-animate-el>Download CV</a>
-
-                        </div>
-                    </div>
-                </div> <!-- about-info -->
-
-
-            </section> <!-- end s-about -->
-
-
-            <!-- ### works
-            ================================================== -->
-            <section id="works" class="s-works target-section">
-
-                <div class="row about-expertise" data-animate-block>
-                    <div class="column lg-12">
-
-                        <h2 class="text-pretitle" data-animate-el>Works</h2>
-
-                        <ul class="skills-list h1" data-animate-el>
-                            <li>Microservices</li>
-                            <li>Domain Driven Design</li>
-                            <li>Web App</li>
-                            <li>Java Backend</li>
-                            <li>Java Desktop App</li>
-                            <li>iOS Mobile App</li>
-                            <li>Human Machine Interface</li>
-                        </ul>
-
-                    </div>
-                </div> <!-- end about-expertise -->
-
-
-                <div class="row about-timelines" data-animate-block>
-
-                    <div class="column lg-6 tab-12">
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Experience
-                        </h2>
-
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">PT. Len Railway Systems</h3>
-                                    <h5 class="timeline__meta">HMI / Software Engineer</h5>
-                                    <p class="timeline__timeframe">2017 - Present</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed Train Management Information System that help operator to record and visualize
-                                        actual train movement in Train Trip Graph at Surabaya Centralized Train Control, Puwokerto
-                                        Centralized Train Control, Madiun Centralized Train Supervisory, and Soekarno-Hatta Airport
-                                        Skytrain.
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed Automatic Broadcast System that integrate timetable system with Public
-                                        Announcement and Passenger Information Display at Soekarno-Hatta Airport Skytrain.
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed new innovation with Online Man Machine Interface that displayed in the RailwayTech 2023 exhibition.
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Responsible for managing a team of HMI engineers and making sure all HMI system are
-                                        properly integrated in an Operation Control Center at Yogyakarta.
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Responsible for design an HMI from hardware architecture to software configuration for
-                                        more that 50 train stations in Indonesia.
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Responsible for redesign signaling HMI standard.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">CV. Boarding Labs</h4>
-                                    <h5 class="timeline__meta">Full Stack Developer</h5>
-                                    <p class="timeline__timeframe">2015 - 2016</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Responsible for managing a team and making sure all system are properly applied with the
-                                        requirements - Inventory Management System App
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed Photo booth desktop App use Mac & DSLR Camera - Pix.ly
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed iOS Mobile App - Finpay, WeDrink, FiClip, PRIMA, HP Store
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">PT. Ciptadasoft</h4>
-                                    <h5 class="timeline__meta">Professional Placement Programmer</h5>
-                                    <p class="timeline__timeframe">2013</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Redesigned Website - office website, Kemkominfo portal website
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed chat, google Alert, report generator function - Onebox CRM
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">WAMR</h4>
-                                    <h5 class="timeline__meta">Full Stack Developer</h5>
-                                    <p class="timeline__timeframe">2012 - 2014</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed iOS Mobile App - Popbot, Guardian, Knowledge
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed portfolio website - Gelaelized, Acer DJ Tiesto
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Redesigned social media website - Jomblo.com
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed interactive comic website - Flores
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">PT. Arya Jaya Formasi</h4>
-                                    <h5 class="timeline__meta">iOS Developer</h5>
-                                    <p class="timeline__timeframe">2011 - 2012</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed iOS social media Mobile App - iPosting
-                                    </p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        Developed iPad games - Rehydration Games (Pocari Sweat)
-                                    </p>
-                                </div>
-                            </div>
-    
-                        </div> <!-- end timeline -->
-
-                    </div> <!-- end column -->
-
-                    <div class="column lg-6 tab-12">
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Education
-                        </h2>
-
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Purwadhika Digital Technology School</h3>
-                                    <h5 class="timeline__meta">Senior Software Engineer</h5>
-                                    <p class="timeline__timeframe">2025</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>Final Project Score: 86.2/100</p>
-                                    <p>
-                                        Developed microservices-based multi-warehouse e-commerce applications.
-                                        Applied Domain-Driven Design (DDD) to ensure modularity and maintainability.
-                                        Implemented Onion Architecture and Hexagonal Architecture for flexibility and separation of concerns.
-                                        Designed High-Level Architecture (HLD) and Low-Level Architecture (LLD), leveraging CQRS and Event-Driven Architecture with Kafka and Zookeeper for real-time data processing.
-                                        Utilized Database-per-Service for data isolation and PostgreSQL for reliable storage.
-
-                                        Key Skills:
-                                        ✔️ Microservices Architecture with CQRS for inventory and order management
-                                        ✔️ Event-Driven Architecture using Kafka and Zookeeper
-                                        ✔️ Onion & Hexagonal Architecture for maintainability and flexibility
-                                        ✔️ Authentication & Security with Auth Gateway and JWT
-                                        ✔️ Next.js for frontend development
-                                        ✔️ Docker and Kubernetes for containerization and orchestration
-                                        ✔️ Google Cloud Platform (GCP) deployment with autoscaling
-                                        ✔️ Unit Testing & Mocking using JUnit & Mockito
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Institut Teknologi Bandung</h3>
-                                    <h5 class="timeline__meta">Engineers Profession Program</h5>
-                                    <p class="timeline__timeframe">2022</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>GPA: 3.75/4.00</p>
-                                </div>
-                            </div>
-    
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Politeknik Negeri Bandung</h4>
-                                    <h5 class="timeline__meta">D-IV Informatics Engineering Study Program</h5>
-                                    <p class="timeline__timeframe">2014</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>
-                                        GPA: 3.73/4.00
-                                        With the research title “Wheeled Robot Simulation to Follow the Wall with Wall Follower Algorithm“
-                                    </p>
-                                </div>
-                            </div>
-    
-                        </div> <!-- end timeline -->
-                        
-                    </div> <!-- end column -->
-
-
-                </div> <!-- end about-timelines -->
-
-            </section> <!-- end s-about -->
-
-            <!-- ### contact
-            ================================================== -->
-            <section id="contact" class="s-contact target-section">
-
-                <div class="row contact-top">
-                    <div class="column lg-12">
-                        <h2 class="text-pretitle">
-                            Get In Touch
-                        </h2>
-
-                        <p class="h1">
-                            I love to hear from you.
-                            Whether you have a question or just 
-                            want to chat about design, tech & art — shoot me a message.
-                        </p>
-                    </div>
-                </div> <!-- end contact-top -->
-
-                <div class="row contact-bottom">
-                    <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Reach me at</h3>
-                        <p class="contact-links">
-                            <a target="_blank" rel="noopener noreferrer" href="mailto:sulistyo.p.n@gmail.com" class="mailtoui">sulistyo.p.n@gmail.com</a> <br>
-                            <a target="_blank" rel="noopener noreferrer" href="tel:+628562061152">+62 856 206 1152</a>
-                        </p>
-                    </div>
-                    <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Social</h3>
-                        <ul class="contact-social">
-                            <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sulistyo-ponco-nugroho-709aa884/">LinkedIn</a></li>
-                            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/sulistyo-p-n">Github</a></li>
-                            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/sulistyopn/">Instagram</a></li>
-                            <li><a target="_blank" rel="noopener noreferrer" href="https://wa.me/628562061152">Whatsapp</a></li>
-                        </ul>
-                    </div>
-                    <div class="column lg-4 md-12 contact-block">
-                        <a target="_blank" rel="noopener noreferrer" href="mailto:sulistyo.p.n@gmail.com" class="mailtoui btn btn--medium u-fullwidth contact-btn">Say Hello.</a>
-                    </div>
-                </div> <!-- end contact-bottom -->
-
-            </section> <!-- end contact -->
-
-        </main> <!-- end s-content -->
-
-
-        <!-- ## footer
-        ================================================== -->
-        <footer class="s-footer">
-
-            <div class="row">
-                <div class="column ss-copyright">
-                    <span>© Copyright Luther 2021</span> 
-                    <span>Design by <a href="https://www.styleshout.com/">StyleShout</a> Distribution By <a href="https://themewagon.com">Themewagon</a></span>
-                </div>
-
-                <div class="ss-go-top">
-                    <a class="smoothscroll" title="Back to Top" href="#top">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-        </footer> <!-- end s-footer -->
-
-    </div> <!-- end -s-pagewrap -->
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+<footer>
+  <div class="container">
+    <span>© 2026 Ir. Sulistyo Ponco Nugroho, S.ST</span>
+    <span>Software Engineer · System Architecture</span>
+  </div>
+</footer>
 
 </body>
 </html>
